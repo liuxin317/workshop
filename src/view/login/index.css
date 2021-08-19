@@ -1,0 +1,51 @@
+.login-wrapper {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  justify-content: flex-end;
+  background: #f0f2f5;
+  background-image: url("~@img/bg.png");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+}
+
+.login-wrapper .login-logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.login-wrapper .login-logo img {
+  width: 40%;
+}
+
+.login-wrapper h1 {
+  text-align: center;
+  padding-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.login-wrapper h1 img {
+  width: 110px;
+  margin-right: 10px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.login-wrapper .login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.login-wrapper .login-form article {
+  width: 328px;
+}
+
+.login-wrapper .login-form-button {
+  width: 100%;
+}

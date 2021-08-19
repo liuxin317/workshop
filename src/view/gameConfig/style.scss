@@ -1,0 +1,41 @@
+.game-config__box {
+    display: flex;
+    justify-content: space-between;
+
+    .content {
+        flex: auto;
+        margin-left: 30px;
+
+        .domain-box {
+            .title {
+                font-size: 20px;
+                line-height: 50px;
+            }
+
+            .row-box {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 20px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #ddd;
+                
+                .name-group {
+                    h6 {
+                        font-size: 14px;
+                    }
+                    .input {
+                        span {
+                            color: #999;
+                        }
+                    }
+                }
+                .eidt-group {
+                    a {
+                        margin: 0 5px;
+                    }
+                }
+            }
+        }
+    }
+}

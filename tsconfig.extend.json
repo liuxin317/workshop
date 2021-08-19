@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "paths": {
+      "@store": [
+        "./store"
+      ],
+      "@view": [
+        "./view/index.tsx"
+      ],
+      "@rematchs": [
+        "./rematch"
+      ],
+      "@com/*": [
+        "./components/*"
+      ],
+      "@action/*": [
+        "./store/action/*"
+      ],
+      "@img/*": [
+        "./img/*"
+      ],
+      "@view/*": [
+        "./view/*"
+      ],
+      "@style/*": [
+        "./style/*"
+      ],
+      "@util": [
+        "./util"
+      ],
+      "@util/*": [
+        "./util/*"
+      ],
+      "@fetch": [
+        "./util/fetch.ts"
+      ],
+      "@config": [
+        "./config"
+      ],
+      "@config/*": [
+        "./config/*"
+      ]
+    }
+  }
+}
