@@ -63,7 +63,7 @@ export class XhrFetch {
                         const contentType: string = (response.headers as any).get('content-type').toLocaleLowerCase();
 
                         //stream
-                        if (['stream', 'excel', 'download', 'blob'].some(it => contentType.includes(it))) {
+                        if (['stream', 'excel', 'download', 'blob'].some(it => contentType?.includes(it))) {
                             return response.blob()
                         }
 
@@ -92,16 +92,16 @@ export class XhrFetch {
                     } = data;
 
                     //API约定成功
-                    if (success_code.includes(code)) return resolve(data);
+                    if (success_code?.includes(code)) return resolve(data);
                     message.error(msg);
 
                     //强制退出code
-                    if (logout_code.includes(code)) {
+                    if (logout_code?.includes(code)) {
                         
                     }
 
                     //需要提示错误信息code
-                    if (!no_message_code.includes(code)) {
+                    if (!no_message_code?.includes(code)) {
 
                         if (!message_error_que.length) {
                             const i = message.error(msg, 3, () => {

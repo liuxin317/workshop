@@ -32,7 +32,7 @@ export default function Index(props) {
     const [visible, setVisible] = useState(false);
     const menu = util.menu;
     const pathname = location.pathname;
-    const [openKeys, setOpenKeys] = useState<string[]>([]);
+    const [openKeys, setOpenKeys] = useState<(string)[]>([]);
     const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
     const [title, setTitle] = useState<string>('');
     // const state = useSelector((state: any) => state);
@@ -44,11 +44,11 @@ export default function Index(props) {
     }, []);
 
     useEffect(() => {
+        setSelectedKeys([pathname]);
         if (!location.state) {
-            setSelectedKeys([pathname]);
             selectOpenKeys(menu);
         } else {
-            setOpenKeys(location.state?.parentId);
+            setOpenKeys([String(location.state?.parentId)]);
             setTitle(location.state?.title);
         }
     }, [pathname]);

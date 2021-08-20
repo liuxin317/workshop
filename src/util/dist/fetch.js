@@ -86,7 +86,7 @@ var XhrFetch = /** @class */ (function () {
                             if (response.ok) {
                                 var contentType_1 = response.headers.get('content-type').toLocaleLowerCase();
                                 //stream
-                                if (['stream', 'excel', 'download', 'blob'].some(function (it) { return contentType_1.includes(it); })) {
+                                if (['stream', 'excel', 'download', 'blob'].some(function (it) { return contentType_1?.includes(it); })) {
                                     return response.blob();
                                 }
                                 return response.json();
@@ -111,13 +111,13 @@ var XhrFetch = /** @class */ (function () {
                             if (code === 0)
                                 return resolve(data);
                             //强制退出code
-                            if (logout_code.includes(code)) {
+                            if (logout_code?.includes(code)) {
                                 _store_1["default"].dispatch({
                                     type: 'user/logout'
                                 });
                             }
                             //需要提示错误信息code
-                            if (!no_message_code.includes(code)) {
+                            if (!no_message_code?.includes(code)) {
                                 if (!message_error_que.length) {
                                     var i = antd_1.message.error(msg, 3, function () {
                                         message_error_que.pop();

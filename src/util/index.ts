@@ -41,7 +41,7 @@ export class Util {
         const styles = ['decimal', 'currency', 'percent'];
         if (args.length <= 1) {
             let v = args[0];
-            if (styles.includes(v)) { style = v; }
+            if (styles?.includes(v)) { style = v; }
             else if (Number.isInteger(v)) { min = v; }
             else if (typeof v === 'boolean') { isCent = true; min = 2; } //为分的时候，默认启用两位小数
         } else {
@@ -79,7 +79,7 @@ export class Util {
     //用户菜单
     get menu() {
         return menu?.filter(item => {
-            return item.role.includes('all')
+            return item.role?.includes('all')
         });
     }
 
