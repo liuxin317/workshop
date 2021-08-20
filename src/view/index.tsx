@@ -33,6 +33,7 @@ export default function Index(props) {
     const menu = util.menu;
     const pathname = location.pathname;
     const [openKeys, setOpenKeys] = useState<string[]>([]);
+    const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
     const [title, setTitle] = useState<string>('');
     // const state = useSelector((state: any) => state);
     
@@ -44,8 +45,10 @@ export default function Index(props) {
 
     useEffect(() => {
         if (!location.state) {
+            setSelectedKeys([pathname]);
             selectOpenKeys(menu);
         } else {
+            setOpenKeys(location.state?.parentId);
             setTitle(location.state?.title);
         }
     }, [pathname]);
@@ -54,7 +57,7 @@ export default function Index(props) {
         data.forEach(item => {
             if (item.path === pathname) {
                 setTitle(item.title);
-                setOpenKeys([String(typeof item.id !== 'number' ? item.id?.substr(0, 1) : item.id)]);
+                setOpenKeys([String(item.parentId)]);
             } else {
                 if (item.children?.length) {
                     selectOpenKeys(item.children);
@@ -83,7 +86,7 @@ export default function Index(props) {
         </Menu>
     );
 
-    const recursionMenus:any =  (data:any) => {
+    const recursionMenus =  (data):React.ReactElement => {
         return (
             <>
             {
@@ -100,7 +103,9 @@ export default function Index(props) {
                         if (item.id) {
                             return (
                                 <Menu.Item key={item.path}>
-                                    <a onClick={() => navigate(item.path, {state: {title: item.title}})}>
+                                    <a onClick={() => {
+                                        navigate(item.path, {state: {title: item.title, parentId: item.parentId}})
+                                    }}>
                                         {item.icon}
                                         <span>{item.title}</span>
                                     </a>
@@ -112,6 +117,10 @@ export default function Index(props) {
             }
             </>
         )
+    };
+
+    const onSelectMenu = ({ selectedKeys }) => {
+        setSelectedKeys(selectedKeys);
     };
 
     return (
@@ -141,8 +150,9 @@ export default function Index(props) {
                     <Menu
                         className='view-menus'
                         mode="inline"
-                        defaultSelectedKeys={[pathname]}
+                        selectedKeys={selectedKeys}
                         openKeys={openKeys}
+                        onSelect={onSelectMenu}
                         theme="dark"
                         onOpenChange={(openKeys:any[]) => setOpenKeys(openKeys)}
                     >

@@ -21,7 +21,7 @@ export default function columns(operateElm?): columnItem[] {
             width: 150
         },
         {
-            title: '角色描述',
+            title: '上级角色',
             dataIndex: 'address',
             key: 'address',
             width: 200

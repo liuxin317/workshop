@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import { Button, Table, Popconfirm } from 'antd';
+import { useNavigate } from "react-router-dom";
 import columns, { x } from './columns';
 import AddEdit from './component/addEdit';
 import Authority from './component/authority';
@@ -29,6 +30,7 @@ export default function Index () {
     const [total, setTotal] = useState<number>(0);
     const [sorter, setSorter] = useState<any>('');
     const [rowData, setRowData] = useState<any>('');
+    const navigate = useNavigate();
 
     const tableChange = (pagination, filters, sorter) => {
         setPage(pagination.current);
@@ -70,7 +72,7 @@ export default function Index () {
         <section className="role-box">
             <div className="btns-row">
                 <Button onClick={openAddEdit.bind(null, '')} type="primary">新增</Button>
-                <Button>管理关系</Button>
+                <Button onClick={() => navigate('/role/relationship')}>管理关系</Button>
             </div>
 
             <div className="table-box">

@@ -2,7 +2,7 @@ import {useState} from 'react';
 import { Button, Table, Popconfirm } from 'antd';
 import columns, { x } from './columns';
 import AddEdit from './component/addEdit';
-import Authority from './component/authority';
+import GoBack from '@com/goBack';
 import './style.scss';
 
 const dataSource = [
@@ -54,7 +54,6 @@ export default function Index () {
         return (
             <div className="a-group">
                 <a onClick={() => openAddEdit(record)}>编辑</a>
-                <a onClick={() => openAuthority(record)}>权限</a>
                 <Popconfirm
                     title="您确定要删除此任务吗?"
                     onConfirm={handleOk}
@@ -68,9 +67,9 @@ export default function Index () {
 
     return (
         <section className="role-box">
+            <GoBack url="/role" />
             <div className="btns-row">
                 <Button onClick={openAddEdit.bind(null, '')} type="primary">新增</Button>
-                <Button>管理关系</Button>
             </div>
 
             <div className="table-box">
@@ -99,13 +98,6 @@ export default function Index () {
                 visible={addEditVisible}
                 rowData={rowData}
                 handleCancel={() => setAddEditVisible(false)}
-            />
-
-            {/* 权限 */}
-            <Authority 
-                visible={authorityVisible}
-                rowData={rowData}
-                handleCancel={() => setAuthorityVisible(false)}
             />
         </section>
     )

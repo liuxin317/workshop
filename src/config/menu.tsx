@@ -18,6 +18,7 @@ export default [
         role: ["all"],
         children: [{
             id: '1-1',
+            parentId: 1,
             title: "管理一体化平台",
             key: "chart",
             path: "/analysis",
@@ -26,6 +27,7 @@ export default [
             role: ["all"],
         },{
             id: '1-2',
+            parentId: 1,
             title: "生产组织管理",
             key: "chart",
             path: "/b",
@@ -34,6 +36,7 @@ export default [
             role: ["all"],
         },{
             id: '1-3',
+            parentId: 1,
             title: "岗位价值分析",
             key: "chart",
             path: "/c",
@@ -51,6 +54,7 @@ export default [
         icon: <PieChartOutlined />,
         role: ["all"],
         children: [{
+            parentId: 2,
             id: '2-1',
             title: "准入记录",
             key: "chart",
@@ -59,6 +63,7 @@ export default [
             icon: <PieChartOutlined />,
             role: ["all"],
         },{
+            parentId: 2,
             id: '2-2',
             title: "门禁配置",
             key: "chart",
@@ -78,6 +83,7 @@ export default [
         role: ["all"],
         children: [{
             id: '3-1',
+            parentId: 3,
             title: "摄像头管理",
             key: "chart",
             path: "/s",
@@ -96,6 +102,7 @@ export default [
         role: ["all"],
         children: [{
             id: '4-1',
+            parentId: 4,
             title: "轨迹回放",
             key: "chart",
             path: "/dd",
@@ -113,6 +120,7 @@ export default [
         icon: <PieChartOutlined />,
         role: ["b"],
         children: [{
+            parentId: 5,
             id: '5-1',
             title: "任务列表",
             key: "chart",
@@ -121,6 +129,7 @@ export default [
             icon: <PieChartOutlined />,
             role: ["all"],
         },{
+            parentId: 5,
             id: '5-2',
             title: "任务配置",
             key: "chart",
@@ -139,6 +148,7 @@ export default [
         icon: <PieChartOutlined />,
         role: ["all"],
         children: [{
+            parentId: 6,
             id: '6-1',
             title: "中控大屏",
             key: "chart",
@@ -148,6 +158,7 @@ export default [
             role: ["all"],
         },{
             id: '6-2',
+            parentId: 6,
             title: "恒温恒湿间大屏",
             key: "chart",
             path: "/j",
@@ -156,6 +167,7 @@ export default [
             role: ["all"],
         },{
             id: '6-3',
+            parentId: 6,
             title: "大屏配置",
             key: "chart",
             path: "/kd",
@@ -173,6 +185,7 @@ export default [
         icon: <PieChartOutlined />,
         role: ["all"],
         children: [{
+            parentId: 7,
             id: '7-1',
             title: "工艺类报警配置",
             key: "chart",
@@ -181,6 +194,7 @@ export default [
             icon: <PieChartOutlined />,
             role: ["all"],
         },{
+            parentId: 7,
             id: '7-2',
             title: "环境类报警配置",
             key: "chart",
@@ -189,6 +203,7 @@ export default [
             icon: <PieChartOutlined />,
             role: ["all"],
         },{
+            parentId: 7,
             id: '7-3',
             title: "设备类报警配置",
             key: "chart",
@@ -207,6 +222,7 @@ export default [
         icon: <PieChartOutlined />,
         role: ["all"],
         children: [{
+            parentId: 8,
             id: '8-1',
             title: "用户管理",
             key: "chart",
@@ -215,6 +231,7 @@ export default [
             icon: <PieChartOutlined />,
             role: ["all"],
         },{
+            parentId: 8,
             id: '8-2',
             title: "角色管理",
             key: "chart",
@@ -223,11 +240,13 @@ export default [
             icon: <PieChartOutlined />,
             role: ["all"],
             children: [{
+                parentId: 8,
                 title: '管理关系',
                 path: '/role/relationship', 
                 element: <Relationship />
             }]
         },{
+            parentId: 8,
             id: '8-3',
             title: "资源管理",
             key: "chart",
