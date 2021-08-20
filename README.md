@@ -1,3 +1,4 @@
-# h5 try play
+# workshop
 
-yarn add react-router@next react-router-dom@next history
+npm i | yarn 
+npm run start | yarn start
