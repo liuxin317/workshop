@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense, useCallback } from 'react';
 import { useNavigate, Link, useLocation, Outlet } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { Dropdown, Layout, Menu, Space, Skeleton } from 'antd';
 import {
     SkinOutlined,
@@ -17,9 +17,17 @@ import util from '@util';
 const { SubMenu } = Menu;
 const { Header, Sider, Content } = Layout;
 
-export default function Index() {
-    const navigate = useNavigate();
-    const location = useLocation();
+interface location {
+    pathname: string, 
+    search: string, 
+    hash: string, 
+    state: any, 
+    key: string
+}
+
+export default function Index(props) {
+    const navigate:any = useNavigate();
+    const location:location = useLocation();
     const [collapsed, setCollapsed] = useState(false);
     const [visible, setVisible] = useState(false);
     const menu = util.menu;
@@ -35,14 +43,18 @@ export default function Index() {
     }, []);
 
     useEffect(() => {
-        selectOpenKeys(menu);
+        if (!location.state) {
+            selectOpenKeys(menu);
+        } else {
+            setTitle(location.state?.title);
+        }
     }, [pathname]);
 
     const selectOpenKeys = (data) => {
         data.forEach(item => {
             if (item.path === pathname) {
                 setTitle(item.title);
-                setOpenKeys([String(typeof item.id !== 'number' ? item.id.substr(0, 1) : item.id)]);
+                setOpenKeys([String(typeof item.id !== 'number' ? item.id?.substr(0, 1) : item.id)]);
             } else {
                 if (item.children?.length) {
                     selectOpenKeys(item.children);
@@ -76,7 +88,7 @@ export default function Index() {
             <>
             {
                 data.map(item => {
-                    if (item.children?.length) {
+                    if (item.children?.length && item.children[0].id) {
                         return (
                             <SubMenu key={item.id} icon={<MailOutlined />} title={item.path ? <Link to={item.path}>{item.title}</Link> : item.title}>
                                 {
@@ -85,14 +97,16 @@ export default function Index() {
                             </SubMenu>
                         )
                     } else {
-                        return (
-                            <Menu.Item key={item.path}>
-                                <Link to={item.path}>
-                                    {item.icon}
-                                    <span>{item.title}</span>
-                                </Link>
-                            </Menu.Item>
-                        )
+                        if (item.id) {
+                            return (
+                                <Menu.Item key={item.path}>
+                                    <a onClick={() => navigate(item.path, {state: {title: item.title}})}>
+                                        {item.icon}
+                                        <span>{item.title}</span>
+                                    </a>
+                                </Menu.Item>
+                            )
+                        }
                     }
                 })
             }

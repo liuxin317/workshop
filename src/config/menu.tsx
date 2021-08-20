@@ -5,6 +5,7 @@ import {
 
 const Analysis = lazy(() => import('@view/gameConfig'));
 const Role  = lazy(() => import('@view/system/role'));
+const Relationship = lazy(() => import('@view/system/role/rlationship'));
 
 export default [
     {
@@ -221,6 +222,11 @@ export default [
             element: <Role />,
             icon: <PieChartOutlined />,
             role: ["all"],
+            children: [{
+                title: '管理关系',
+                path: '/role/relationship', 
+                element: <Relationship />
+            }]
         },{
             id: '8-3',
             title: "资源管理",

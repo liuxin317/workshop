@@ -1,13 +1,14 @@
-import View from '@view/index'
-import Login from '@view/login'
-import Home from '@view/home'
-import menu from '@config/menu'
-import { ReactElement } from 'react'
+
+import { ReactElement, lazy } from 'react';
+import View from '@view';
+import Home from '@view/home';
+import menu from '@config/menu';
+import Login from '@view/login';
 
 interface children {
   path: string,
   element: ReactElement | string,
-}
+};
 
 const children: children[] = [];
 function menuDg (data:Array<any>):void {
@@ -17,6 +18,10 @@ function menuDg (data:Array<any>):void {
         path: it.path,
         element: it.element,
       });
+
+      if (it.children?.length) {
+        menuDg(it.children);
+      }
     } else {
       if (it.children.length) {
         menuDg(it.children);
@@ -24,11 +29,10 @@ function menuDg (data:Array<any>):void {
     }
   });
 };
-
 menuDg(menu);
 
 export default [
   { path: '', element: <Home /> },
   { path: '/*', element: <View />, children, },
-  { path: '/login', element: <Login /> }
+  { path: '/login', element: <Login /> },
 ]
