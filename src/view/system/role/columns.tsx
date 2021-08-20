@@ -6,11 +6,7 @@ interface columnItem {
     render?: any
 };
 
-export const x = columns().reduce((a, b:any) => {
-    return a + parseInt(b.width);
-}, 0);
-
-export default function columns(): columnItem[] {
+export default function columns(operateElm?): columnItem[] {
     let column =  [
         {
             title: '序号',
@@ -46,7 +42,10 @@ export default function columns(): columnItem[] {
             title: '操作',
             dataIndex: 'address3',
             key: 'address3',
-            width: 200
+            width: 200,
+            render: (text, record) => {
+                return operateElm(record);
+            }
         },
     ];
 
@@ -58,3 +57,7 @@ export default function columns(): columnItem[] {
 
     return column;
 };
+
+export const x = columns().reduce((a, b:any) => {
+    return a + parseInt(b.width);
+}, 0);

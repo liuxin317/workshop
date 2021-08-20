@@ -172,7 +172,7 @@ export default [
         icon: <PieChartOutlined />,
         role: ["all"],
         children: [{
-            id: '8-1',
+            id: '7-1',
             title: "工艺类报警配置",
             key: "chart",
             path: "/l",
@@ -180,7 +180,7 @@ export default [
             icon: <PieChartOutlined />,
             role: ["all"],
         },{
-            id: '8-2',
+            id: '7-2',
             title: "环境类报警配置",
             key: "chart",
             path: "/z",
@@ -188,7 +188,7 @@ export default [
             icon: <PieChartOutlined />,
             role: ["all"],
         },{
-            id: '8-3',
+            id: '7-3',
             title: "设备类报警配置",
             key: "chart",
             path: "/x",

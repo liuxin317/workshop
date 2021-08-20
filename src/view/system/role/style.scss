@@ -3,3 +3,17 @@
         margin: 0 5px;
     }
 }
+
+.add-eidt__box {
+    .add-eidt__row {
+        display: flex;
+
+        label {
+            width: 120px;
+        }
+
+        .input-group {
+            flex: auto;
+        }
+    }
+}
